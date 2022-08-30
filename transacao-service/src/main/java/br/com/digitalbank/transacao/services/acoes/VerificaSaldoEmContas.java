@@ -3,9 +3,8 @@ package br.com.digitalbank.transacao.services.acoes;
 import br.com.digitalbank.transacao.models.movimentacao.Movimentacao;
 import br.com.digitalbank.transacao.models.transacao.Transacao;
 
-public class VerificaSaldoEmContas implements ExecutaMovimentacao {
+public class VerificaSaldoEmContas {
 
-	@Override
 	public void executa(Movimentacao movimentacao, Transacao transacao) {
 
 		movimentacao.getCpfConta();
@@ -20,5 +19,4 @@ public class VerificaSaldoEmContas implements ExecutaMovimentacao {
 		movimentacao.adicionaTransacao(transacao);
 		
 	}
-
 }

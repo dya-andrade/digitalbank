@@ -18,6 +18,6 @@ public class PoupancaVO extends ContaVO implements Serializable {
 	
 	private List<RendimentoVO> rendimentos;
 
-	@JsonProperty("ultimo_rendimento")
 	private LocalDateTime ultimoRendimento;
+
 }

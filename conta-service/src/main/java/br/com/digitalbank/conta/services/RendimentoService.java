@@ -4,30 +4,34 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.digitalbank.conta.data.vo.conta.v1.PoupancaVO;
-import br.com.digitalbank.conta.data.vo.movimentacao.v1.RendimentoCriadoVO;
+import br.com.digitalbank.conta.data.vo.movimentacao.v1.RendimentoVO;
+import br.com.digitalbank.conta.exceptions.ResourceNotFoundException;
 import br.com.digitalbank.conta.mapper.DozerMapper;
-import br.com.digitalbank.conta.models.conta.Poupanca;
 import br.com.digitalbank.conta.models.movimentacao.Rendimento;
 import br.com.digitalbank.conta.repositories.PoupancaRepository;
+import br.com.digitalbank.conta.services.acoes.RealizaMovimentacao;
 import lombok.RequiredArgsConstructor;
 
 @Service
 @Transactional
 @RequiredArgsConstructor
-public class RendimentoService extends MovimentacaoService<Rendimento, Poupanca> {
-	
+public class RendimentoService  {
+
 	private final PoupancaRepository poupancaRepository;
 	
-
-	public PoupancaVO criaRendimento(RendimentoCriadoVO vo) {
-	    var poupanca = DozerMapper.parseObject(vo.getPoupanca(), Poupanca.class);
+	private final RealizaMovimentacao realizaMovimentacao;
 		
-		var rendimento = DozerMapper.parseObject(vo.getRendimento(), Rendimento.class);
+	public PoupancaVO create(RendimentoVO vo, String cpf) {
 
-		super.aplicaMovimentacao(poupanca, rendimento);
+		var poupanca = poupancaRepository.findByCpfCliente(cpf)
+				.orElseThrow(() -> new ResourceNotFoundException("Nenhuma conta poupança encontrada com este CPF!"));
+
+		var rendimento = DozerMapper.parseObject(vo, Rendimento.class);
 		
+		realizaMovimentacao.executa(poupanca, rendimento);
+
 		var poupancaVO = DozerMapper.parseObject(poupancaRepository.save(poupanca), PoupancaVO.class);
-		
+
 		return poupancaVO;
 	}
 }

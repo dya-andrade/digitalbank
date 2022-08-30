@@ -2,6 +2,7 @@ package br.com.digitalbank.conta.models.conta;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class Poupanca extends Conta implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "poupanca_id")
 	private List<Rendimento> rendimentos;
 	
@@ -35,7 +36,7 @@ public class Poupanca extends Conta implements Serializable {
 	@Override
 	public void movimentaNovoValor(BigDecimal percentual) {
 		BigDecimal novoValor = super.valor.multiply(percentual);
-		super.valor.add(novoValor);
+		super.valor = valor.add(novoValor);
 		this.ultimoRendimento = LocalDateTime.now();
 	}
 
