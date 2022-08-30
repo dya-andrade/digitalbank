@@ -1,5 +1,6 @@
 package br.com.digitalbank.conta.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import br.com.digitalbank.conta.data.vo.conta.v1.ContaVO;
 import br.com.digitalbank.conta.data.vo.conta.v1.CorrenteVO;
 import br.com.digitalbank.conta.data.vo.conta.v1.PoupancaVO;
 import br.com.digitalbank.conta.exceptions.EntityPersistenceException;
+import br.com.digitalbank.conta.exceptions.ResourceNotFoundException;
 import br.com.digitalbank.conta.mapper.DozerMapper;
 import br.com.digitalbank.conta.models.conta.Corrente;
 import br.com.digitalbank.conta.models.conta.Poupanca;
@@ -51,6 +53,26 @@ public class ContaService {
 		var poupancaVO = DozerMapper.parseObject(poupancaRepository.save(poupanca), PoupancaVO.class);
 		
 		return new ContaCompletaVO(correnteVO, poupancaVO);
+	}
+
+
+	public ContaCompletaVO findByCpf(String cpf) {
+		logger.info("Busca conta corrente e poupança pelo CPF cliente.");
+		
+		var corrente = correnteRepository.findByCpfCliente(cpf)
+				.orElseThrow(() -> new ResourceNotFoundException("Nenhuma conta encontrada com este CPF!"));
+		
+		var correnteVO = DozerMapper.parseObject(corrente, CorrenteVO.class);
+		
+		var poupancaVO = DozerMapper.parseObject(poupancaRepository.findByCpfCliente(cpf), PoupancaVO.class);
+		
+		return new ContaCompletaVO(correnteVO, poupancaVO);
+	}
+
+
+	public List<ContaCompletaVO> findAll() {
+		
+		return null;
 	}
 
 }
