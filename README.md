@@ -1,5 +1,84 @@
 # Digital Bank
 ANDAMENTO - Projeto pessoal sobre a criação de um banco digital em API RESTful e Microservices.
 
-![image](https://user-images.githubusercontent.com/101612046/187104885-5feabe23-e2dd-4898-a6c1-5ac3a55733f1.png)
+* O projeto é separado em 3 services, um service para dados dos clientes, outro service para as contas dos clientes do tipo poupança e corrente e outro service para transações realizadas nas contas.
 
+* Nesta imagem estou tentando criar um rendimento e lançar na poupança do cliente, mas como o cliente já teve um rendimento lançado em menos de um mês, não foi autorizado.
+
+![image](https://user-images.githubusercontent.com/101612046/187562309-12b80616-5d94-4b16-a8b1-a4c3cf692107.png)
+
+* Json de listagem em pages de todas as contas cadastradas. Além disso, o Json traz as listas de rendimentos e tarifas das contas. 
+
+```json
+{
+    "_embedded": {
+        "contaCompletaVOList": [
+            {
+                "corrente": {
+                    "cpfCliente": "455.587.358-23",
+                    "valor": 700.00,
+                    "tipoConta": "Universitária",
+                    "tarifas": [],
+                    "ultimaTarifa": null
+                },
+                "poupanca": {
+                    "cpfCliente": "455.587.358-23",
+                    "valor": 700.00,
+                    "tipoConta": "Universitária",
+                    "rendimentos": [],
+                    "ultimoRendimento": null
+                },
+                "_links": {
+                    "self": {
+                        "href": "http://host.docker.internal:8100/conta-service/v1/455.587.358-23"
+                    }
+                }
+            },
+            {
+                "corrente": {
+                    "cpfCliente": "478.430.358-23",
+                    "valor": 490.00,
+                    "tipoConta": "Comum",
+                    "tarifas": [
+                        {
+                            "percentual": 2.00,
+                            "data": "2022-08-30",
+                            "tipoMovimentacao": "Mensal"
+                        }
+                    ],
+                    "ultimaTarifa": "2022-08-30"
+                },
+                "poupanca": {
+                    "cpfCliente": "478.430.358-23",
+                    "valor": 530.00,
+                    "tipoConta": "Comum",
+                    "rendimentos": [
+                        {
+                            "percentual": 6.00,
+                            "data": "2022-08-30",
+                            "tipoMovimentacao": "Anual"
+                        }
+                    ],
+                    "ultimoRendimento": "2022-08-30"
+                },
+                "_links": {
+                    "self": {
+                        "href": "http://host.docker.internal:8100/conta-service/v1/478.430.358-23"
+                    }
+                }
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "http://host.docker.internal:8100/conta-service/v1?page=0&size=5&direction=asc"
+        }
+    },
+    "page": {
+        "size": 5,
+        "totalElements": 2,
+        "totalPages": 1,
+        "number": 0
+    }
+}
+```
