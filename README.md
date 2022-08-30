@@ -3,7 +3,7 @@ ANDAMENTO - Projeto pessoal sobre a criação de um banco digital em API RESTful
 
 * O projeto é separado em 3 services, um service para dados dos clientes, outro service para as contas dos clientes do tipo poupança e corrente e outro service para transações realizadas nas contas.
 
-* Nesta imagem estou tentando criar um rendimento e lança na poupança do cliente, mas como o cliente já teve um rendimento lançado em menos de um mês não foi autorizado.
+* Nesta imagem estou tentando criar um rendimento e lançar na poupança do cliente, mas como o cliente já teve um rendimento lançado em menos de um mês, não foi autorizado.
 
 ![image](https://user-images.githubusercontent.com/101612046/187562309-12b80616-5d94-4b16-a8b1-a4c3cf692107.png)
 
