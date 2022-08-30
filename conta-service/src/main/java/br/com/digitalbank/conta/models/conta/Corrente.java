@@ -2,7 +2,7 @@ package br.com.digitalbank.conta.models.conta;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.math.MathContext;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,13 +30,13 @@ public class Corrente extends Conta implements Serializable {
 	@JoinColumn(name = "corrente_id")
 	private List<Tarifa> tarifas;
 
-	private LocalDateTime ultimaTarifa;
+	private LocalDate ultimaTarifa;
 
 	@Override
 	public void movimentaNovoValor(BigDecimal percentual) {
 		BigDecimal novoValor = super.valor.multiply(percentual);
 		super.valor = valor.subtract(novoValor);
-		this.ultimaTarifa = LocalDateTime.now();
+		this.ultimaTarifa = LocalDate.now();
 	}
 
 	@Override

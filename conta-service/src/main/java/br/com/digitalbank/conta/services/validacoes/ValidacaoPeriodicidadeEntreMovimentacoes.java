@@ -1,6 +1,6 @@
 package br.com.digitalbank.conta.services.validacoes;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 
 import br.com.digitalbank.conta.exceptions.ValidationException;
@@ -12,7 +12,7 @@ public class ValidacaoPeriodicidadeEntreMovimentacoes implements ValidacaoMovime
 	@Override
 	public void valida(Conta conta, Movimentacao movimentacao) {
 
-		LocalDateTime dataAtual = LocalDateTime.now();
+		LocalDate dataAtual = LocalDate.now();
 
 		long mesesDesdeUltimaMovimentacao = ChronoUnit.MONTHS.between(conta.dataUltimaMovimentacao(), dataAtual);
 

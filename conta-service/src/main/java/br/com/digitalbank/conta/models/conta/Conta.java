@@ -2,7 +2,7 @@ package br.com.digitalbank.conta.models.conta;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.EnumType;
@@ -40,5 +40,5 @@ public abstract class Conta implements Serializable {
 	
 	abstract public void adicionaMovimentacao(Movimentacao movimentacao);
 	
-	abstract public LocalDateTime dataUltimaMovimentacao();
+	abstract public LocalDate dataUltimaMovimentacao();
 }
