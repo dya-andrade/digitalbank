@@ -1,5 +1,7 @@
 package br.com.digitalbank.conta.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +23,7 @@ public class TarifaController {
 
 	@PostMapping(value = "/{cpf}", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
 			MediaType.APPLICATION_JSON_VALUE })
-	public CorrenteVO create(@RequestBody TarifaVO vo, @PathVariable(value = "cpf") String cpf) {
+	public CorrenteVO create(@RequestBody @Valid TarifaVO vo, @PathVariable(value = "cpf") String cpf) {
 		return service.create(vo, cpf);
 	}
 

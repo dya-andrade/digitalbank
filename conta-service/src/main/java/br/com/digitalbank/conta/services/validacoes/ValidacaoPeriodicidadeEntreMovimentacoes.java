@@ -12,13 +12,15 @@ public class ValidacaoPeriodicidadeEntreMovimentacoes implements ValidacaoMovime
 	@Override
 	public void valida(Conta conta, Movimentacao movimentacao) {
 
-		LocalDate dataAtual = LocalDate.now();
+		if(conta.dataUltimaMovimentacao() != null) {
+			LocalDate dataAtual = LocalDate.now();
 
-		long mesesDesdeUltimaMovimentacao = ChronoUnit.MONTHS.between(conta.dataUltimaMovimentacao(), dataAtual);
+			long mesesDesdeUltimaMovimentacao = ChronoUnit.MONTHS.between(conta.dataUltimaMovimentacao(), dataAtual);
 
-		Integer tempoDoTipoMovimentacao = movimentacao.getTipoMovimentacao().getTempo();
-		
-		if (mesesDesdeUltimaMovimentacao < tempoDoTipoMovimentacao)
-			throw new ValidationException("Intervalo entre as movimentações deve ser de no mínimo " + tempoDoTipoMovimentacao +" mes(es)!");
+			Integer tempoDoTipoMovimentacao = movimentacao.getTipoMovimentacao().getTempo();
+			
+			if (mesesDesdeUltimaMovimentacao < tempoDoTipoMovimentacao)
+				throw new ValidationException("Intervalo entre as movimentações deve ser de no mínimo " + tempoDoTipoMovimentacao +" mes(es)!");
+		}	
 	}
 }

@@ -4,21 +4,23 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+import javax.validation.constraints.NotNull;
 
 import br.com.digitalbank.conta.models.movimentacao.TipoMovimentacao;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-@Data @NoArgsConstructor
-@JsonPropertyOrder({ "valor", "data", "tipoMovimentacao"})
+@Data
 public class MovimentacaoVO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	protected BigDecimal valor;
+	@NotNull
+	protected BigDecimal percentual;
 	
+	@NotNull
 	protected LocalDate data;
 
+	@NotNull
 	protected TipoMovimentacao tipoMovimentacao;
+
 }

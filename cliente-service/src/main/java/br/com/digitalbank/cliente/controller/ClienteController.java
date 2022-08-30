@@ -1,5 +1,7 @@
 package br.com.digitalbank.cliente.controller;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -30,7 +32,7 @@ public class ClienteController {
 
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, 
 			produces = { MediaType.APPLICATION_JSON_VALUE })	
-	public ClienteVO create(@RequestBody ClienteVO vo) {
+	public ClienteVO create(@RequestBody @Valid ClienteVO vo) {
 		return service.create(vo);
 	}
 	

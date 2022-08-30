@@ -1,5 +1,7 @@
 package br.com.digitalbank.conta.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -28,7 +30,7 @@ public class ContaController {
 	private final ContaService service;
 
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ContaCompletaVO create(@RequestBody ContaVO vo) {
+	public ContaCompletaVO create(@RequestBody @Valid ContaVO vo) {
 		return service.create(vo);
 	}
 	

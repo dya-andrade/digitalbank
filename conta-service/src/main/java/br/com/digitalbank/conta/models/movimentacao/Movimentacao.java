@@ -24,7 +24,7 @@ public abstract class Movimentacao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 	
-	protected BigDecimal valor;
+	protected BigDecimal percentual;
 	
 	protected LocalDate data;
 	

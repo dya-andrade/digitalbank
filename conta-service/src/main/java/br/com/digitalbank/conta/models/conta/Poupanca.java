@@ -3,7 +3,6 @@ package br.com.digitalbank.conta.models.conta;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,31 +27,25 @@ public class Poupanca extends Conta implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "poupanca_id")
-	private List<Rendimento> rendimentos;
+	private List<Rendimento> rendimentos = new ArrayList<Rendimento>();
 	
 	private LocalDate ultimoRendimento;
 
 
 	@Override
-	public void movimentaNovoValor(BigDecimal percentual) {
-		BigDecimal novoValor = super.valor.multiply(percentual);
+	public void movimentaNovoValor(BigDecimal novoValor) {
 		super.valor = valor.add(novoValor);
 		this.ultimoRendimento = LocalDate.now();
 	}
 
 	@Override
 	public void adicionaMovimentacao(Movimentacao movimentacao) {
-
 		Rendimento rendimento = DozerMapper.parseObject(movimentacao, Rendimento.class);
-		
-		if (rendimentos == null)
-			rendimentos = new ArrayList<Rendimento>();
-
 		rendimentos.add(rendimento);
 	}
 	
 	@Override
-	public LocalDateTime dataUltimaMovimentacao() {
+	public LocalDate dataUltimaMovimentacao() {
 		return this.ultimoRendimento;
 	}
 }

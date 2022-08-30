@@ -3,7 +3,6 @@ package br.com.digitalbank.conta.models.conta;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -28,30 +27,24 @@ public class Corrente extends Conta implements Serializable {
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "corrente_id")
-	private List<Tarifa> tarifas;
+	private List<Tarifa> tarifas = new ArrayList<Tarifa>();
 
 	private LocalDate ultimaTarifa;
 
 	@Override
-	public void movimentaNovoValor(BigDecimal percentual) {
-		BigDecimal novoValor = super.valor.multiply(percentual);
+	public void movimentaNovoValor(BigDecimal novoValor) {
 		super.valor = valor.subtract(novoValor);
 		this.ultimaTarifa = LocalDate.now();
 	}
 
 	@Override
 	public void adicionaMovimentacao(Movimentacao movimentacao) {
-
 		Tarifa tarifa = DozerMapper.parseObject(movimentacao, Tarifa.class);
-
-		if (tarifas == null)
-			tarifas = new ArrayList<Tarifa>();
-
 		tarifas.add(tarifa);
 	}
 
 	@Override
-	public LocalDateTime dataUltimaMovimentacao() {
+	public LocalDate dataUltimaMovimentacao() {
 		return this.ultimaTarifa;
 	}
 }

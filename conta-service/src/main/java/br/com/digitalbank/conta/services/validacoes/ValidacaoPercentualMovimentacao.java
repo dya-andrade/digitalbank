@@ -1,7 +1,6 @@
 package br.com.digitalbank.conta.services.validacoes;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 
 import br.com.digitalbank.conta.exceptions.ValidationException;
 import br.com.digitalbank.conta.models.conta.Conta;
@@ -12,19 +11,16 @@ public class ValidacaoPercentualMovimentacao implements ValidacaoMovimentacao {
 
 
 	@Override
-	public void valida(Conta conta, Movimentacao movimentacao) {
-		
-		BigDecimal percentualTarifa = movimentacao.getValor();
-		
+	public void valida(Conta conta, Movimentacao movimentacao) {	
 		Double percentual;
 		
 		if(movimentacao.getTipoMovimentacao().equals(TipoMovimentacao.ANUAL))
-			percentual = 0.08;
+			percentual = 8.0;
 		else
-			percentual = 0.05;
+			percentual = 5.0;
 		
-		if (percentualTarifa.compareTo(new BigDecimal(percentual)) > 0) 
-			throw new ValidationException("A movimentação não pode ser superior a " + (percentual * 10) + "% do valor!");
+		if (movimentacao.getPercentual().compareTo(new BigDecimal(percentual)) > 0) 
+			throw new ValidationException("A movimentação não pode ser superior a " + percentual + "% de percentual!");
 		
 	}
 }
