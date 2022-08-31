@@ -12,7 +12,7 @@ import br.com.digitalbank.conta.services.validacoes.ValidacaoMovimentacao;
 import br.com.digitalbank.conta.services.validacoes.ValidacaoPercentualMovimentacao;
 import br.com.digitalbank.conta.services.validacoes.ValidacaoPeriodicidadeEntreMovimentacoes;
 
-@Component
+@Component 
 public class RealizaMovimentacao {
 
 	private List<ValidacaoMovimentacao> validacoes;
