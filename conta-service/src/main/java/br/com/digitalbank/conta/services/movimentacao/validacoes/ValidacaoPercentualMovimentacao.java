@@ -1,4 +1,4 @@
-package br.com.digitalbank.conta.services.validacoes;
+package br.com.digitalbank.conta.services.movimentacao.validacoes;
 
 import java.math.BigDecimal;
 

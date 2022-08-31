@@ -25,8 +25,10 @@ public class ClienteVO extends RepresentationModel<ClienteVO> implements Seriali
 
 	@NotBlank
 	private String telefone;
-
+	
 	@NotNull
 	private EnderecoVO endereco;
+
+	private Boolean ativado;
 
 }

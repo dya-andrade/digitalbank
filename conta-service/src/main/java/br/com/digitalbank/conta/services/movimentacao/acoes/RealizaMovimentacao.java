@@ -1,4 +1,4 @@
-package br.com.digitalbank.conta.services.acoes;
+package br.com.digitalbank.conta.services.movimentacao.acoes;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 
 import br.com.digitalbank.conta.models.conta.Conta;
 import br.com.digitalbank.conta.models.movimentacao.Movimentacao;
-import br.com.digitalbank.conta.services.validacoes.ValidacaoMovimentacao;
-import br.com.digitalbank.conta.services.validacoes.ValidacaoPercentualMovimentacao;
-import br.com.digitalbank.conta.services.validacoes.ValidacaoPeriodicidadeEntreMovimentacoes;
+import br.com.digitalbank.conta.services.movimentacao.validacoes.ValidacaoMovimentacao;
+import br.com.digitalbank.conta.services.movimentacao.validacoes.ValidacaoPercentualMovimentacao;
+import br.com.digitalbank.conta.services.movimentacao.validacoes.ValidacaoPeriodicidadeEntreMovimentacoes;
 
 @Component 
 public class RealizaMovimentacao {

@@ -1,4 +1,4 @@
-package br.com.digitalbank.conta.services.validacoes;
+package br.com.digitalbank.conta.services.movimentacao.validacoes;
 
 import br.com.digitalbank.conta.models.conta.Conta;
 import br.com.digitalbank.conta.models.movimentacao.Movimentacao;

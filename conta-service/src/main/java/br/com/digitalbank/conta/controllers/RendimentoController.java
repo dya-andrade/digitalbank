@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.digitalbank.conta.data.vo.conta.v1.PoupancaVO;
 import br.com.digitalbank.conta.data.vo.movimentacao.v1.RendimentoVO;
-import br.com.digitalbank.conta.services.RendimentoService;
+import br.com.digitalbank.conta.services.movimentacao.RendimentoService;
 import lombok.RequiredArgsConstructor;
 
 @RestController

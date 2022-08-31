@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.digitalbank.conta.data.vo.conta.v1.ContaCompletaVO;
 import br.com.digitalbank.conta.data.vo.conta.v1.ContaVO;
-import br.com.digitalbank.conta.services.ContaService;
+import br.com.digitalbank.conta.services.conta.ContaService;
 import lombok.RequiredArgsConstructor;
 
 @RestController

@@ -1,4 +1,4 @@
-package br.com.digitalbank.conta.services.validacoes;
+package br.com.digitalbank.conta.services.movimentacao.validacoes;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;

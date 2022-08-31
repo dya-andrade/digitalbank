@@ -1,4 +1,4 @@
-package br.com.digitalbank.conta.services;
+package br.com.digitalbank.conta.services.movimentacao;
 
 import java.util.List;
 
@@ -12,8 +12,8 @@ import br.com.digitalbank.conta.mapper.DozerMapper;
 import br.com.digitalbank.conta.models.conta.Corrente;
 import br.com.digitalbank.conta.models.movimentacao.Tarifa;
 import br.com.digitalbank.conta.repositories.CorrenteRepository;
-import br.com.digitalbank.conta.services.acoes.RealizaMovimentacao;
-import br.com.digitalbank.conta.services.validacoes.ValidacaoMovimentacao;
+import br.com.digitalbank.conta.services.movimentacao.acoes.RealizaMovimentacao;
+import br.com.digitalbank.conta.services.movimentacao.validacoes.ValidacaoMovimentacao;
 import lombok.RequiredArgsConstructor;
 
 @Service

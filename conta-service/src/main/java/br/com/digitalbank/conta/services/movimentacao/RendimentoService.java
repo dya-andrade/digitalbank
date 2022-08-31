@@ -1,4 +1,4 @@
-package br.com.digitalbank.conta.services;
+package br.com.digitalbank.conta.services.movimentacao;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,7 +9,7 @@ import br.com.digitalbank.conta.exceptions.ResourceNotFoundException;
 import br.com.digitalbank.conta.mapper.DozerMapper;
 import br.com.digitalbank.conta.models.movimentacao.Rendimento;
 import br.com.digitalbank.conta.repositories.PoupancaRepository;
-import br.com.digitalbank.conta.services.acoes.RealizaMovimentacao;
+import br.com.digitalbank.conta.services.movimentacao.acoes.RealizaMovimentacao;
 import lombok.RequiredArgsConstructor;
 
 @Service
