@@ -38,15 +38,15 @@ public class ContaService {
 
 	private final PoupancaRepository poupancaRepository;
 
-	private final RealizaValidacaoConta realizaValidacaoContaNova;
+	private final RealizaValidacaoConta realizaValidacaoConta;
 
 	private Logger logger = LoggerFactory.getLogger(ContaService.class);
 
-	private final PagedResourcesAssembler<ContaCompletaVO> assembler; // montadora
+	private final PagedResourcesAssembler<ContaCompletaVO> assembler; 
 
 	public ContaCompletaVO create(ContaVO vo) {
 
-		realizaValidacaoContaNova.validaCriacaoDeContaNova(vo);
+		realizaValidacaoConta.validaCriacaoDeContaNova(vo);
 
 		logger.info("Persistindo e criando uma conta corrente.");
 
@@ -67,8 +67,8 @@ public class ContaService {
 	}
 
 	public ContaCompletaVO findByCpf(String cpf) {
-		var corrente = correnteRepository.findByCpfCliente(cpf)
-				.orElseThrow(() -> new ResourceNotFoundException("Nenhuma conta encontrada com este CPF!"));
+		
+		var corrente = realizaValidacaoConta.validaEBuscaContaExistente(cpf);
 
 		logger.info("Busca conta corrente e poupança pelo CPF cliente.");
 
