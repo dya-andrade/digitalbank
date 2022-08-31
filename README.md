@@ -7,6 +7,8 @@ ANDAMENTO - Projeto pessoal sobre a criação de um banco digital em API RESTful
 
 ![image](https://user-images.githubusercontent.com/101612046/187562309-12b80616-5d94-4b16-a8b1-a4c3cf692107.png)
 
+</br>
+
 * Json de listagem em pages de todas as contas cadastradas. Além disso, o Json traz as listas de rendimentos e tarifas das contas. 
 
 ```json
@@ -82,3 +84,12 @@ ANDAMENTO - Projeto pessoal sobre a criação de um banco digital em API RESTful
     }
 }
 ```
+</br>
+
+* Aqui foi aplicado princípios de SOLID e Design Patterns
+
+![image](https://user-images.githubusercontent.com/101612046/187565721-16609dff-4ca8-4405-aab0-b8041ed6c870.png)
+![image](https://user-images.githubusercontent.com/101612046/187564830-3fb9eb85-92b0-4778-870d-226e68df45ad.png)
+
+
+
