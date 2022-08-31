@@ -88,6 +88,7 @@ ANDAMENTO - Projeto pessoal sobre a criação de um banco digital em API RESTful
 
 * Aqui foi aplicado princípios de SOLID e Design Patterns
 
-![image](https://user-images.githubusercontent.com/101612046/187565339-95146e2a-cb91-4fce-9ad9-7885ccca93a0.png)
 ![image](https://user-images.githubusercontent.com/101612046/187564830-3fb9eb85-92b0-4778-870d-226e68df45ad.png)
+![image](https://user-images.githubusercontent.com/101612046/187565556-b52d4b0e-c7ce-4743-b78c-0a38cc740862.png)
+
 
