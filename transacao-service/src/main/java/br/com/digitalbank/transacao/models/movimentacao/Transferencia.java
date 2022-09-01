@@ -21,15 +21,12 @@ public class Transferencia extends Movimentacao implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(cascade = CascadeType.PERSIST)
+	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "transferencia_id")
-	private List<Transacao> transacoes;
+	private List<Transacao> transacoes = new ArrayList<Transacao>();
 
 	@Override
 	public void adicionaTransacao(Transacao transacao) {
-		if (transacoes == null)
-			transacoes = new ArrayList<Transacao>();
-		
 		transacoes.add(transacao);	
 	}
 }

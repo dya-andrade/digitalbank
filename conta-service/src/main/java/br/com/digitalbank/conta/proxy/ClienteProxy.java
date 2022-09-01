@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import br.com.digitalbank.conta.response.Cliente;
 
-@FeignClient(name = "cliente-service")
+@FeignClient(name = "cliente-service", url = "http://localhost:8765/cliente-service/v1")
 public interface ClienteProxy {
 	
 	@GetMapping(value = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })

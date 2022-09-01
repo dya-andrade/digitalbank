@@ -3,20 +3,13 @@ package br.com.digitalbank.transacao.services.acoes;
 import br.com.digitalbank.transacao.models.movimentacao.Movimentacao;
 import br.com.digitalbank.transacao.models.transacao.Transacao;
 
-public class VerificaSaldoEmContas {
+public class VerificaSaldoEmConta implements AcaoTransacao {
 
+	@Override
 	public void executa(Movimentacao movimentacao, Transacao transacao) {
-
-		movimentacao.getCpfConta();
-		movimentacao.getCpfTransacao();
-		//verifica saldo em contas
-		
 		transacao.aplicaTarifaExtra();
-		transacao.aprova();
-		//aprova transacao
-		
+		transacao.aprova();		
 		
 		movimentacao.adicionaTransacao(transacao);
-		
 	}
 }

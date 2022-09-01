@@ -29,6 +29,6 @@ public class ClienteVO extends RepresentationModel<ClienteVO> implements Seriali
 	@NotNull
 	private EnderecoVO endereco;
 
-	private Boolean ativado;
+	private Boolean ativado = this.ativado == null ? true : false;;
 
 }

@@ -19,10 +19,10 @@ import lombok.RequiredArgsConstructor;
 public class RendimentoService  {
 
 	private final PoupancaRepository poupancaRepository;
+
+	private final RealizaValidacaoConta realizaValidacaoConta;
 	
 	private final RealizaMovimentacao realizaMovimentacao;
-	
-	private final RealizaValidacaoConta realizaValidacaoConta;
 		
 	public PoupancaVO create(RendimentoVO vo, String cpf) {
 
@@ -31,7 +31,7 @@ public class RendimentoService  {
 		var poupanca = contaCompleta.getPoupanca();
 		
 		var rendimento = DozerMapper.parseObject(vo, Rendimento.class);
-		
+				
 		realizaMovimentacao.executaNovaMovimentacao(poupanca, rendimento);
 
 		var poupancaVO = DozerMapper.parseObject(poupancaRepository.save(poupanca), PoupancaVO.class);

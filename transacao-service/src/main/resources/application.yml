@@ -33,5 +33,7 @@ management:
         include:
         - '*' #actuator
 
-
+mq: #fila
+  queues:
+    auth-transacao: auth-transacao
 
