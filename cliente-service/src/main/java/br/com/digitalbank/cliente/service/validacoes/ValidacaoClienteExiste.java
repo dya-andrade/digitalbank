@@ -1,6 +1,6 @@
 package br.com.digitalbank.cliente.service.validacoes;
 
-import br.com.digitalbank.cliente.models.Cliente;
+import br.com.digitalbank.cliente.model.Cliente;
 
 public interface ValidacaoClienteExiste {
 

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import br.com.digitalbank.conta.models.conta.TipoConta;
+import br.com.digitalbank.conta.model.conta.TipoConta;
 import lombok.Data;
 
 @Data 

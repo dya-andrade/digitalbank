@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import br.com.digitalbank.transacao.models.transacao.TransacaoCompleta;
+import br.com.digitalbank.transacao.model.transacao.TransacaoCompleta;
 import lombok.RequiredArgsConstructor;
 
 @Component

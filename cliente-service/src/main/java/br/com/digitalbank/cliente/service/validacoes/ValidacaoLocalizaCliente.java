@@ -3,8 +3,8 @@ package br.com.digitalbank.cliente.service.validacoes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.digitalbank.cliente.exceptions.ResourceNotFoundException;
-import br.com.digitalbank.cliente.models.Cliente;
+import br.com.digitalbank.cliente.exception.ResourceNotFoundException;
+import br.com.digitalbank.cliente.model.Cliente;
 import br.com.digitalbank.cliente.repository.ClienteRepository;
 
 @Component

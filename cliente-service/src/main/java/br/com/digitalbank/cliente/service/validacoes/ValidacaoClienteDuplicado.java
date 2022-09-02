@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
-import br.com.digitalbank.cliente.exceptions.EntityPersistenceException;
-import br.com.digitalbank.cliente.models.Cliente;
+import br.com.digitalbank.cliente.exception.EntityPersistenceException;
+import br.com.digitalbank.cliente.model.Cliente;
 import br.com.digitalbank.cliente.repository.ClienteRepository;
 
 @Component

@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import javax.validation.constraints.NotNull;
 
-import br.com.digitalbank.conta.models.movimentacao.TipoMovimentacao;
+import br.com.digitalbank.conta.model.movimentacao.TipoMovimentacao;
 import lombok.Data;
 
 @Data

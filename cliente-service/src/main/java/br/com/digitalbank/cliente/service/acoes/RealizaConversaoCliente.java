@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 import br.com.digitalbank.cliente.controller.ClienteController;
 import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
 import br.com.digitalbank.cliente.mapper.DozerMapper;
-import br.com.digitalbank.cliente.models.Cliente;
+import br.com.digitalbank.cliente.model.Cliente;
 
 @Component
 public class RealizaConversaoCliente {
