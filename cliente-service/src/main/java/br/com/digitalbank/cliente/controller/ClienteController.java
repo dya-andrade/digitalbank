@@ -32,35 +32,35 @@ public class ClienteController {
 
 	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, 
 			produces = { MediaType.APPLICATION_JSON_VALUE })	
-	public ClienteVO create(@RequestBody @Valid ClienteVO vo) {
-		return service.create(vo);
+	public ClienteVO criaCliente(@RequestBody @Valid ClienteVO vo) {
+		return service.criaCliente(vo);
 	}
 	
 	@GetMapping(value = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ClienteVO findByCpf(@PathVariable(value = "cpf") String cpf) {
-		return service.findByCpf(cpf);
+	public ClienteVO buscaClientePorCpf(@PathVariable(value = "cpf") String cpf) {
+		return service.buscaClientePorCpf(cpf);
 	}
 	
 	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ResponseEntity<PagedModel<EntityModel<ClienteVO>>> findAll(
+	public ResponseEntity<PagedModel<EntityModel<ClienteVO>>> listaTodosClientes(
 			@RequestParam(value = "nome", defaultValue = "") String nome,
-			@RequestParam(value = "page", defaultValue = "0") Integer page,
-			@RequestParam(value = "size", defaultValue = "5") Integer size,
-			@RequestParam(value = "direction", defaultValue = "asc") String direction){
+			@RequestParam(value = "pagina", defaultValue = "0") Integer pagina,
+			@RequestParam(value = "tamanho", defaultValue = "5") Integer tamanho,
+			@RequestParam(value = "direcao", defaultValue = "asc") String direcao){
 		
-		var sortDirection = "desc".equalsIgnoreCase(direction) ? Direction.DESC : Direction.ASC;
+		var sortDirection = "desc".equalsIgnoreCase(direcao) ? Direction.DESC : Direction.ASC;
 
-		Pageable pageable = PageRequest.of(page, size, Sort.by(sortDirection, "nomeCompleto"));
+		Pageable pageable = PageRequest.of(pagina, tamanho, Sort.by(sortDirection, "nomeCompleto"));
 
 		if (nome.isBlank())
-			return ResponseEntity.ok(service.findAll(pageable));
+			return ResponseEntity.ok(service.listaTodosClientes(pageable));
 		else
-			return ResponseEntity.ok(service.findAllByNome(nome, pageable));
+			return ResponseEntity.ok(service.listaTodosClientesPorNome(nome, pageable));
 	}
 	
 	@PatchMapping(value = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ClienteVO disableCliente(@PathVariable(value = "cpf") String cpf) {
-		return service.disableCliente(cpf);
+	public ClienteVO desativaCliente(@PathVariable(value = "cpf") String cpf) {
+		return service.desativaCliente(cpf);
 	}
 
 }

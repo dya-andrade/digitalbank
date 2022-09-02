@@ -11,5 +11,5 @@ import br.com.digitalbank.transacao.response.ContaCompleta;
 public interface ContaProxy {
 
 	@GetMapping(value = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public ContaCompleta findByCpf(@PathVariable(value = "cpf") String cpf);
+	public ContaCompleta buscaContaPorCpf(@PathVariable(value = "cpf") String cpf);
 }

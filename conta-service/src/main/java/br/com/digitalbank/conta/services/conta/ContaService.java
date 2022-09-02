@@ -35,13 +35,13 @@ public class ContaService {
 	private Logger logger = LoggerFactory.getLogger(ContaService.class);
 
 
-	public ContaCompletaVO create(ContaVO vo) {
+	public ContaCompletaVO criaConta(ContaVO vo) {
 
 		logger.info("Persistindo e criando uma conta corrente e poupança.");
 		
 		realizaValidacaoConta.validaCriacaoDeContaNova(vo);
 		
-		var contaCompleta = realizaConversaoConta.converteEmContaCompletaEntity(vo);
+		var contaCompleta = realizaConversaoConta.converteEmContaCompletaEntidade(vo);
 
 		correnteRepository.save(contaCompleta.getCorrente());
 		poupancaRepository.save(contaCompleta.getPoupanca());
@@ -51,7 +51,7 @@ public class ContaService {
 		return contaCompletaVO;
 	}
 
-	public ContaCompletaVO findByCpf(String cpf) {
+	public ContaCompletaVO buscaContaPorCpf(String cpf) {
 
 		logger.info("Busca conta corrente e poupança pelo CPF cliente.");
 
@@ -62,7 +62,7 @@ public class ContaService {
 		return contaCompletaVO;
 	}
 
-	public PagedModel<EntityModel<ContaCompletaVO>> findAll(Pageable pageable) {
+	public PagedModel<EntityModel<ContaCompletaVO>> listaTodasContas(Pageable pageable) {
 		logger.info("Busca todas as contas cadastradas.");
 
 		Page<ContaCompleta> contasPage = correnteRepository.findAllContas(pageable);

@@ -36,12 +36,12 @@ public class RealizaConversaoConta {
 		ContaCompletaVO contaCompletaVO = new ContaCompletaVO(correnteVO, poupancaVO);
 
 		contaCompletaVO
-				.add(linkTo(methodOn(ContaController.class).findByCpf(correnteVO.getCpfCliente())).withSelfRel());
+				.add(linkTo(methodOn(ContaController.class).buscaContaPorCpf(correnteVO.getCpfCliente())).withSelfRel());
 
 		return contaCompletaVO;
 	}
 
-	public ContaCompleta converteEmContaCompletaEntity(ContaVO vo) {
+	public ContaCompleta converteEmContaCompletaEntidade(ContaVO vo) {
 		var corrente = DozerMapper.parseObject(vo, Corrente.class);
 		var poupanca = DozerMapper.parseObject(vo, Poupanca.class);
 
@@ -58,10 +58,10 @@ public class RealizaConversaoConta {
 						DozerMapper.parseObject(c.getPoupanca(), PoupancaVO.class)));
 
 		vosPages.map(c -> c
-				.add(linkTo(methodOn(ContaController.class).findByCpf(c.getCorrente().getCpfCliente())).withSelfRel()));
+				.add(linkTo(methodOn(ContaController.class).buscaContaPorCpf(c.getCorrente().getCpfCliente())).withSelfRel()));
 
 		Link link = linkTo(
-				methodOn(ContaController.class).findAll(pageable.getPageNumber(), pageable.getPageSize(), "asc"))
+				methodOn(ContaController.class).listaTodasContas(pageable.getPageNumber(), pageable.getPageSize(), "asc"))
 						.withSelfRel();
 
 		return assembler.toModel(vosPages, link);

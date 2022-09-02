@@ -17,7 +17,7 @@ public class ValidacaoPeriodicidadeEntreMovimentacoes implements ValidacaoMovime
 
 			long mesesDesdeUltimaMovimentacao = ChronoUnit.MONTHS.between(conta.dataUltimaMovimentacao(), dataAtual);
 
-			Integer tempoDoTipoMovimentacao = movimentacao.getTipoMovimentacao().getTempo();
+			Integer tempoDoTipoMovimentacao = movimentacao.getTipoMovimentacao().getTempoEmMes();
 			
 			if (mesesDesdeUltimaMovimentacao < tempoDoTipoMovimentacao)
 				throw new ValidationException("Intervalo entre as movimentações deve ser de no mínimo " + tempoDoTipoMovimentacao +" mes(es)!");

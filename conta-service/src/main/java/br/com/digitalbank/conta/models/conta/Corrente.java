@@ -30,7 +30,7 @@ public class Corrente extends Conta implements Serializable {
 	private List<Tarifa> tarifas = new ArrayList<Tarifa>();
 
 	private LocalDate ultimaTarifa;
-
+	
 	@Override
 	public void movimentaNovoValor(BigDecimal novoValor) {
 		super.valor = valor.subtract(novoValor);

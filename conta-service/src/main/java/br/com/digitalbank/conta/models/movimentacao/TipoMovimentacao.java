@@ -10,11 +10,11 @@ public enum TipoMovimentacao {
 
 	private String descricao;
 
-	private Integer tempo;
+	private Integer tempoEmMes;
 
-	TipoMovimentacao(String descricao, Integer tempo) {
+	TipoMovimentacao(String descricao, Integer tempoEmMes) {
 		this.descricao = descricao;
-		this.tempo = tempo;
+		this.tempoEmMes = tempoEmMes;
 	}
 
 	@JsonValue
@@ -22,7 +22,7 @@ public enum TipoMovimentacao {
 		return descricao;
 	}
 
-	public Integer getTempo() {
-		return tempo;
+	public Integer getTempoEmMes() {
+		return tempoEmMes;
 	}
 }

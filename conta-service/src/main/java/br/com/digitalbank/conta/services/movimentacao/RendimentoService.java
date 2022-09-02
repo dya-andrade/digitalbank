@@ -10,7 +10,7 @@ import br.com.digitalbank.conta.models.conta.ContaCompleta;
 import br.com.digitalbank.conta.models.movimentacao.Rendimento;
 import br.com.digitalbank.conta.repositories.PoupancaRepository;
 import br.com.digitalbank.conta.services.conta.acoes.RealizaValidacaoConta;
-import br.com.digitalbank.conta.services.movimentacao.acoes.RealizaMovimentacao;
+import br.com.digitalbank.conta.services.movimentacao.acoes.RealizaMovimentacaoNaConta;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -22,9 +22,9 @@ public class RendimentoService  {
 
 	private final RealizaValidacaoConta realizaValidacaoConta;
 	
-	private final RealizaMovimentacao realizaMovimentacao;
+	private final RealizaMovimentacaoNaConta realizaMovimentacaoNaConta;
 		
-	public PoupancaVO create(RendimentoVO vo, String cpf) {
+	public PoupancaVO criaRendimento(RendimentoVO vo, String cpf) {
 
 		ContaCompleta contaCompleta = realizaValidacaoConta.validaEBuscaContaExistente(cpf);
 		
@@ -32,7 +32,7 @@ public class RendimentoService  {
 		
 		var rendimento = DozerMapper.parseObject(vo, Rendimento.class);
 				
-		realizaMovimentacao.executaNovaMovimentacao(poupanca, rendimento);
+		realizaMovimentacaoNaConta.executaNovaMovimentacao(poupanca, rendimento);
 
 		var poupancaVO = DozerMapper.parseObject(poupancaRepository.save(poupanca), PoupancaVO.class);
 

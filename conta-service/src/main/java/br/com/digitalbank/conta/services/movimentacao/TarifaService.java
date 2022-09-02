@@ -10,7 +10,7 @@ import br.com.digitalbank.conta.models.conta.ContaCompleta;
 import br.com.digitalbank.conta.models.movimentacao.Tarifa;
 import br.com.digitalbank.conta.repositories.CorrenteRepository;
 import br.com.digitalbank.conta.services.conta.acoes.RealizaValidacaoConta;
-import br.com.digitalbank.conta.services.movimentacao.acoes.RealizaMovimentacao;
+import br.com.digitalbank.conta.services.movimentacao.acoes.RealizaMovimentacaoNaConta;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -20,12 +20,12 @@ public class TarifaService {
 
 	private final CorrenteRepository correnteRepository;
 	
-	private final RealizaMovimentacao realizaMovimentacao;
+	private final RealizaMovimentacaoNaConta realizaMovimentacaoNaConta;
 	
 	private final RealizaValidacaoConta realizaValidacaoConta;
 
 
-	public CorrenteVO create(TarifaVO vo, String cpf) {
+	public CorrenteVO criaTarifa(TarifaVO vo, String cpf) {
 
 		ContaCompleta contaCompleta = realizaValidacaoConta.validaEBuscaContaExistente(cpf);
 		
@@ -33,7 +33,7 @@ public class TarifaService {
 		
 		var tarifa = DozerMapper.parseObject(vo, Tarifa.class);
 		
-		realizaMovimentacao.executaNovaMovimentacao(corrente, tarifa);
+		realizaMovimentacaoNaConta.executaNovaMovimentacao(corrente, tarifa);
 
 		var correnteVO = DozerMapper.parseObject(correnteRepository.save(corrente), CorrenteVO.class);
 

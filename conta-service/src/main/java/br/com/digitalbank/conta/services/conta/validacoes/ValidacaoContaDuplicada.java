@@ -11,7 +11,7 @@ import br.com.digitalbank.conta.models.conta.Corrente;
 import br.com.digitalbank.conta.repositories.CorrenteRepository;
 
 @Component
-public class ValidacaoContaDuplicada implements ValidacaoConta {
+public class ValidacaoContaDuplicada implements ValidacaoContaNova {
 
 	@Autowired
 	private CorrenteRepository correnteRepository;

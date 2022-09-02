@@ -11,5 +11,5 @@ import br.com.digitalbank.conta.response.Cliente;
 public interface ClienteProxy {
 	
 	@GetMapping(value = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })
-	public Cliente findByCpf(@PathVariable(value = "cpf") String cpf);
+	public Cliente buscaClientePorCpf(@PathVariable(value = "cpf") String cpf);
 }

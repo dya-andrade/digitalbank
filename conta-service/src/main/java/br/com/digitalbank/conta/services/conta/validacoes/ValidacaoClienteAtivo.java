@@ -9,14 +9,14 @@ import br.com.digitalbank.conta.proxy.ClienteProxy;
 import br.com.digitalbank.conta.response.Cliente;
 
 @Component
-public class ValidacaoClienteAtivo implements ValidacaoConta {
+public class ValidacaoClienteAtivo implements ValidacaoContaNova {
 
 	@Autowired
 	private ClienteProxy proxy;
 	
 	@Override
 	public void valida(ContaVO conta) {
-		Cliente cliente = proxy.findByCpf(conta.getCpfCliente());
+		Cliente cliente = proxy.buscaClientePorCpf(conta.getCpfCliente());
 		
 		if(!cliente.getAtivado())
 			throw new EntityPersistenceException("Cliente está desativado no Digital Bank.");

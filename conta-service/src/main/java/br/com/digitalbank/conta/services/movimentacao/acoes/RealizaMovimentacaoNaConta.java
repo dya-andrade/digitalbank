@@ -12,15 +12,15 @@ import br.com.digitalbank.conta.models.movimentacao.Movimentacao;
 import br.com.digitalbank.conta.services.movimentacao.validacoes.ValidacaoMovimentacao;
 
 @Component
-public class RealizaMovimentacao {
+public class RealizaMovimentacaoNaConta {
 
 	@Autowired
 	private List<ValidacaoMovimentacao> validacoes;
-
+	
 	
 	public void executaNovaMovimentacao(Conta conta, Movimentacao movimentacao) {
 		this.validacoes.forEach(v -> v.valida(conta, movimentacao));
-
+		
 		conta.adicionaMovimentacao(movimentacao);
 		conta.movimentaNovoValor(calculaNovoValor(conta, movimentacao));
 	}
