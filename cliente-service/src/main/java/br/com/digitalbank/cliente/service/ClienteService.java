@@ -14,8 +14,8 @@ import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
 import br.com.digitalbank.cliente.mapper.DozerMapper;
 import br.com.digitalbank.cliente.model.Cliente;
 import br.com.digitalbank.cliente.repository.ClienteRepository;
-import br.com.digitalbank.cliente.service.acoes.RealizaConversaoCliente;
-import br.com.digitalbank.cliente.service.acoes.RealizaValidacaoCliente;
+import br.com.digitalbank.cliente.service.acao.RealizaConversaoCliente;
+import br.com.digitalbank.cliente.service.acao.RealizaValidacaoCliente;
 import lombok.RequiredArgsConstructor;
 
 @Service

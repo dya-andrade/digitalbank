@@ -15,16 +15,24 @@ import lombok.RequiredArgsConstructor;
 public class AutenticaTransacaoPublisher {
 
 	private final RabbitTemplate rabbitTemplate;
-	private final Queue queueAuthTransacao; 
+	private final Queue queueAuthTransacao;
 
-	public void autenticaTransacao(TransacaoCompleta dados) throws JsonProcessingException {
+	public void autenticaTransacao(TransacaoCompleta dados) {
 		var json = converteParaJson(dados);
 		rabbitTemplate.convertAndSend(queueAuthTransacao.getName(), json);
 	}
 
-	private String converteParaJson(TransacaoCompleta dados) throws JsonProcessingException {
+	private String converteParaJson(TransacaoCompleta dados) {
 		ObjectMapper mapper = new ObjectMapper();
-		var json = mapper.writeValueAsString(dados);
+
+		String json = "";
+
+		try {
+			json = mapper.writeValueAsString(dados);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+
 		return json;
 	}
 }

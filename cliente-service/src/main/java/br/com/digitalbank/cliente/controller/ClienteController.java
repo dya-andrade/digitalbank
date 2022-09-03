@@ -30,18 +30,17 @@ public class ClienteController {
 	
 	private final ClienteService service;
 
-	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, 
-			produces = { MediaType.APPLICATION_JSON_VALUE })	
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)	
 	public ClienteVO criaCliente(@RequestBody @Valid ClienteVO vo) {
 		return service.criaCliente(vo);
 	}
 	
-	@GetMapping(value = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(value = "/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ClienteVO buscaClientePorCpf(@PathVariable(value = "cpf") String cpf) {
 		return service.buscaClientePorCpf(cpf);
 	}
 	
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<PagedModel<EntityModel<ClienteVO>>> listaTodosClientes(
 			@RequestParam(value = "nome", defaultValue = "") String nome,
 			@RequestParam(value = "pagina", defaultValue = "0") Integer pagina,
@@ -58,7 +57,7 @@ public class ClienteController {
 			return ResponseEntity.ok(service.listaTodosClientesPorNome(nome, pageable));
 	}
 	
-	@PatchMapping(value = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@PatchMapping(value = "/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ClienteVO desativaCliente(@PathVariable(value = "cpf") String cpf) {
 		return service.desativaCliente(cpf);
 	}

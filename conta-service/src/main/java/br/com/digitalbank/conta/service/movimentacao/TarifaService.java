@@ -9,7 +9,7 @@ import br.com.digitalbank.conta.mapper.DozerMapper;
 import br.com.digitalbank.conta.model.conta.ContaCompleta;
 import br.com.digitalbank.conta.model.movimentacao.Tarifa;
 import br.com.digitalbank.conta.repository.CorrenteRepository;
-import br.com.digitalbank.conta.service.conta.acoes.RealizaValidacaoConta;
+import br.com.digitalbank.conta.service.conta.acao.RealizaValidacaoConta;
 import br.com.digitalbank.conta.service.movimentacao.acoes.RealizaMovimentacaoNaConta;
 import lombok.RequiredArgsConstructor;
 

@@ -21,8 +21,7 @@ public class RendimentoController {
 
 	private final RendimentoService service;
 
-	@PostMapping(value = "/{cpf}", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
-			MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/{cpf}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public PoupancaVO criaRendimento(@RequestBody @Valid RendimentoVO vo, @PathVariable(value = "cpf") String cpf) {
 		return service.criaRendimento(vo, cpf);
 	}

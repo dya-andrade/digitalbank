@@ -29,17 +29,17 @@ public class ContaController {
 
 	private final ContaService service;
 
-	@PostMapping(consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = { MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public ContaCompletaVO criaConta(@RequestBody @Valid ContaVO vo) {
 		return service.criaConta(vo);
 	}
 	
-	@GetMapping(value = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(value = "/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ContaCompletaVO buscaContaPorCpf(@PathVariable(value = "cpf") String cpf) {
 		return service.buscaContaPorCpf(cpf);
 	}
 	
-	@GetMapping(produces = { MediaType.APPLICATION_JSON_VALUE })
+	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	public PagedModel<EntityModel<ContaCompletaVO>> listaTodasContas(
 			@RequestParam(value = "pagina", defaultValue = "0") Integer pagina,
 			@RequestParam(value = "tamanho", defaultValue = "5") Integer tamanho,

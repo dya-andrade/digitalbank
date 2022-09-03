@@ -21,8 +21,7 @@ public class TarifaController {
 
 	private final TarifaService service;
 
-	@PostMapping(value = "/{cpf}", consumes = { MediaType.APPLICATION_JSON_VALUE }, produces = {
-			MediaType.APPLICATION_JSON_VALUE })
+	@PostMapping(value = "/{cpf}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	public CorrenteVO criaTarifa(@RequestBody @Valid TarifaVO vo, @PathVariable(value = "cpf") String cpf) {
 		return service.criaTarifa(vo, cpf);
 	}
