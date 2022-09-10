@@ -17,7 +17,7 @@ public class VerificaSaldoEmConta implements RealizaTransacao {
 	@Override
 	public void executa(Movimentacao movimentacao, Transacao transacao) {
 		
-		ContaCompleta contaOrigem = proxy.buscaContaPorCpf(movimentacao.getCpfConta());
+		ContaCompleta contaOrigem = proxy.buscaContaPorCpf(movimentacao.getCpfContaOrigem());
 		
 		Integer verificaSaldo = contaOrigem.getCorrente().getValor().compareTo(transacao.getValor());
 		

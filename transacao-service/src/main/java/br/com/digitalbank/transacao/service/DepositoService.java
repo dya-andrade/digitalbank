@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.digitalbank.transacao.data.vo.v1.movimentacao.DepositoVO;
 import br.com.digitalbank.transacao.data.vo.v1.transacao.TransacaoCompletaVO;
-import br.com.digitalbank.transacao.data.vo.v1.transacao.TransacaoVO;
 import br.com.digitalbank.transacao.mapper.DozerMapper;
 import br.com.digitalbank.transacao.model.movimentacao.Deposito;
 import br.com.digitalbank.transacao.model.transacao.Transacao;
@@ -44,11 +42,9 @@ public class DepositoService {
 		
 		autenticaTransacao.autenticaTransacao(transacaoCompleta);
 		
-		Deposito depositoSalvo = repository.save(deposito);
-		
-		var depositoVO = DozerMapper.parseObject(depositoSalvo, DepositoVO.class);
-		
-		return new TransacaoCompletaVO(depositoVO, vo.getTransacao());
+		repository.save(deposito);
+				
+		return new TransacaoCompletaVO(vo.getMovimentacao(), vo.getTransacao());
 	}
 
 }

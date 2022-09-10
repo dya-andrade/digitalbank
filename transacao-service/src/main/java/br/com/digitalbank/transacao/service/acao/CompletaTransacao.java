@@ -14,8 +14,8 @@ public class CompletaTransacao implements FinalizaTransacao {
 
 		transacao.finaliza();
 		
-		return new TransacaoCompleta(movimentacao.getCpfConta(),
-				movimentacao.getCpfTransacao(), transacao.getValor());
+		return new TransacaoCompleta(movimentacao.getCpfContaOrigem(),
+				movimentacao.getCpfContaDestino(), transacao.getValor());
 	}
 
 }

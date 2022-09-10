@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class TransacaoCompleta {
 
-	protected String cpfConta;
-	protected String cpfTransacao;
+	private String cpfContaOrigem;
+	private String cpfContaDestino;
 	
 	private BigDecimal valor;
 }

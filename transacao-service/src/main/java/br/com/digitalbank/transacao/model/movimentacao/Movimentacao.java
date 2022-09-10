@@ -16,9 +16,9 @@ public abstract class Movimentacao {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
-	
-	protected String cpfConta;
-	protected String cpfTransacao;
+
+	protected String cpfContaOrigem;
+	protected String cpfContaDestino;
 	
 	public abstract void adicionaTransacao(Transacao transacao);
 }

@@ -4,8 +4,8 @@ import lombok.Data;
 
 @Data  
 public class MovimentacaoVO {
-	
-	protected String cpfConta;
-	protected String cpfTransacao;
+
+	protected String cpfContaOrigem;
+	protected String cpfContaDestino;
 	
 }

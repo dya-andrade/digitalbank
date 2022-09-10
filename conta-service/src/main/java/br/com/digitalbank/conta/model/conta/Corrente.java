@@ -47,4 +47,12 @@ public class Corrente extends Conta implements Serializable {
 	public LocalDate dataUltimaMovimentacao() {
 		return this.ultimaTarifa;
 	}
+	
+	public void retiraValorTransacao(BigDecimal valor) {
+		super.valor = super.valor.subtract(valor);
+	}
+
+	public void adicionaValorTransacao(BigDecimal valor) {
+		super.valor = super.valor.add(valor);
+	}
 }
