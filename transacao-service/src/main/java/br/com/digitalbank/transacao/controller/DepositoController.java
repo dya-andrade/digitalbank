@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.digitalbank.transacao.data.vo.v1.movimentacao.DepositoCompletoVO;
+import br.com.digitalbank.transacao.data.vo.v1.transacao.TransacaoCompletaVO;
 import br.com.digitalbank.transacao.service.DepositoService;
 import lombok.RequiredArgsConstructor;
 
@@ -19,8 +19,8 @@ public class DepositoController {
 	
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public DepositoCompletoVO criaDeposito(@RequestBody DepositoCompletoVO depositoCompleto) {
-		return service.criaDeposito(depositoCompleto);
+	public TransacaoCompletaVO criaDeposito(@RequestBody TransacaoCompletaVO vo) {
+		return service.criaDeposito(vo);
 	}
 
 }

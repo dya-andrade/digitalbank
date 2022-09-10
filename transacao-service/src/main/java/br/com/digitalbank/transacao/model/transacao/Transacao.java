@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import br.com.digitalbank.transacao.model.transacao.situacao.EmAnalise;
 import br.com.digitalbank.transacao.model.transacao.situacao.SituacaoTransacao;
@@ -35,14 +36,8 @@ public class Transacao implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private TipoTransacao tipoTransacao;
 	
-	private SituacaoTransacao situacao;
-	
-	public Transacao(BigDecimal valor, LocalDate data, TipoTransacao tipoTransacao) {
-		this.valor = valor;
-		this.data = data;
-		this.tipoTransacao = tipoTransacao;
-		this.situacao = new EmAnalise();
-	}
+	@Transient
+	private SituacaoTransacao situacao = new EmAnalise();
 	
 	public void aplicaTarifaExtra() {
 		BigDecimal valorDoDescontoExtra = this.situacao.calculaValorTarifaExtra(this);

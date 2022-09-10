@@ -12,7 +12,7 @@ public class MQConfig {
 	private String authTransacaoFila;
 	
 	@Bean
-	public Queue queueEmissaoCartoes(){ //para onde irá publicar as mensagens
+	public Queue queueAuthTransacao(){ //para onde irá publicar as mensagens
 		return new Queue(authTransacaoFila, true); //nome da fila e se ela é duravél
 	}
 }

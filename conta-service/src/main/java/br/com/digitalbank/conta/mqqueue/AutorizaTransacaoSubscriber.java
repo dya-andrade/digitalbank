@@ -2,11 +2,13 @@ package br.com.digitalbank.conta.mqqueue;
 
 import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.digitalbank.conta.response.TransacaoCompleta;
 
+@Component
 public class AutorizaTransacaoSubscriber {
 
 	@RabbitListener(queues = "${mq.queues.auth-transacao}")

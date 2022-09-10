@@ -9,7 +9,6 @@ import br.com.digitalbank.conta.model.movimentacao.TipoMovimentacao;
 
 public class ValidacaoPercentualMovimentacao implements ValidacaoMovimentacao {
 
-
 	@Override
 	public void valida(Conta conta, Movimentacao movimentacao) {	
 		Double percentual;

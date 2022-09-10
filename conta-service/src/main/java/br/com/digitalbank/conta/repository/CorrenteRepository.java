@@ -17,7 +17,7 @@ public interface CorrenteRepository extends JpaRepository<Corrente, Long> {
 
 	Optional<Corrente> findByCpfCliente(@Param("cpf") String cpfCliente);
 	
-	@Query("SELECT NEW br.com.digitalbank.conta.models.conta.ContaCompleta(c, p) FROM "
+	@Query("SELECT NEW br.com.digitalbank.conta.model.conta.ContaCompleta(c, p) FROM "
 			+ "Corrente c INNER JOIN Poupanca p ON c.cpfCliente = p.cpfCliente")
 	Page<ContaCompleta> findAllContas(Pageable pageable);
 	

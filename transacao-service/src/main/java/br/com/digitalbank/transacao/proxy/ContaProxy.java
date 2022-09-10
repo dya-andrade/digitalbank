@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import br.com.digitalbank.transacao.response.ContaCompleta;
 
-@FeignClient(name = "conta-service/v1")
+@FeignClient(name = "conta-service", url = "http://localhost:8765/conta-service/v1")
 public interface ContaProxy {
 
 	@GetMapping(value = "/{cpf}", produces = { MediaType.APPLICATION_JSON_VALUE })

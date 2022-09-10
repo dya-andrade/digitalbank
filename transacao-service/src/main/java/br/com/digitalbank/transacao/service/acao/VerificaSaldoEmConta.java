@@ -19,10 +19,11 @@ public class VerificaSaldoEmConta implements RealizaTransacao {
 		
 		ContaCompleta contaOrigem = proxy.buscaContaPorCpf(movimentacao.getCpfConta());
 		
-		Integer valorOrigm = transacao.getValor().compareTo(contaOrigem.getCorrente().getValor());
+		Integer verificaSaldo = contaOrigem.getCorrente().getValor().compareTo(transacao.getValor());
 		
-		if(valorOrigm < 0) 
+		if(verificaSaldo < 0) 
 			transacao.reprova();
 		
+		transacao.aprova();		
 	}
 }
