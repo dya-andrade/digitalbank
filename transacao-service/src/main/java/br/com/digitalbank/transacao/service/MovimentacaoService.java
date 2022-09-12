@@ -15,14 +15,14 @@ import br.com.digitalbank.transacao.model.transacao.Transacao;
 import br.com.digitalbank.transacao.model.transacao.TransacaoCompleta;
 import br.com.digitalbank.transacao.mqqueue.AutenticaTransacaoPublisher;
 import br.com.digitalbank.transacao.service.acao.FinalizaTransacao;
-import br.com.digitalbank.transacao.service.acao.RealizaTransacao;
+import br.com.digitalbank.transacao.service.acao.ExecutaTransacao;
 
 @Service
 @Transactional
 public abstract class MovimentacaoService <E extends Movimentacao, V extends MovimentacaoVO, R extends JpaRepository<E, Long>> {
 	
 	@Autowired
-	private List<RealizaTransacao> realizaTransacao;
+	private List<ExecutaTransacao> realizaTransacao;
 	
 	@Autowired
 	private FinalizaTransacao finalizaTransacao;

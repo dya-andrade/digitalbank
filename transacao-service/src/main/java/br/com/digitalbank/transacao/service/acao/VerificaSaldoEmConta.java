@@ -9,7 +9,7 @@ import br.com.digitalbank.transacao.proxy.ContaProxy;
 import br.com.digitalbank.transacao.response.ContaCompleta;
 
 @Component
-public class VerificaSaldoEmConta implements RealizaTransacao {
+public class VerificaSaldoEmConta implements ExecutaTransacao {
 
 	@Autowired
 	private ContaProxy proxy;

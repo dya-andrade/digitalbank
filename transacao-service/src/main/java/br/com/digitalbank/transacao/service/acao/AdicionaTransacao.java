@@ -6,7 +6,7 @@ import br.com.digitalbank.transacao.model.movimentacao.Movimentacao;
 import br.com.digitalbank.transacao.model.transacao.Transacao;
 
 @Component
-public class AprovaTransacao implements RealizaTransacao {
+public class AdicionaTransacao implements ExecutaTransacao {
 
 	@Override
 	public void executa(Movimentacao movimentacao, Transacao transacao) {
