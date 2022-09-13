@@ -22,7 +22,7 @@ import br.com.digitalbank.transacao.service.acao.ExecutaTransacao;
 public abstract class MovimentacaoService <E extends Movimentacao, V extends MovimentacaoVO, R extends JpaRepository<E, Long>> {
 	
 	@Autowired
-	private List<ExecutaTransacao> realizaTransacao;
+	private List<ExecutaTransacao> executaTransacao;
 	
 	@Autowired
 	private FinalizaTransacao finalizaTransacao;
@@ -41,7 +41,7 @@ public abstract class MovimentacaoService <E extends Movimentacao, V extends Mov
 		E movimentacao = this.parseEntity(vo.getMovimentacao());
 		var transacao = DozerMapper.parseObject(vo.getTransacao(), Transacao.class);
 		
-		realizaTransacao.forEach(r -> r.executa(movimentacao, transacao));
+		executaTransacao.forEach(r -> r.executa(movimentacao, transacao));
 		
 		TransacaoCompleta transacaoCompleta = finalizaTransacao.finaliza(movimentacao, transacao);
 		

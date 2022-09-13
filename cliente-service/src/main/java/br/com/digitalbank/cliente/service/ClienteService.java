@@ -38,6 +38,8 @@ public class ClienteService {
 		logger.info("Persistindo uma entidade cliente");
 
 		var cliente = DozerMapper.parseObject(vo, Cliente.class);
+		
+		repository.save(cliente);
 
 		logger.info("Entidade cliente persitida");
 
