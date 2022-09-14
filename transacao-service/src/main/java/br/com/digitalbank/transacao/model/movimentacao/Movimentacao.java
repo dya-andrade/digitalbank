@@ -15,10 +15,10 @@ public abstract class Movimentacao {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long id;
+	private Long id;
 
-	protected String cpfContaOrigem;
-	protected String cpfContaDestino;
+	private String cpfContaOrigem;
+	private String cpfContaDestino;
 	
 	public abstract void adicionaTransacao(Transacao transacao);
 }

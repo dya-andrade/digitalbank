@@ -14,7 +14,7 @@ import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
 import br.com.digitalbank.cliente.mapper.DozerMapper;
 import br.com.digitalbank.cliente.model.Cliente;
 import br.com.digitalbank.cliente.repository.ClienteRepository;
-import br.com.digitalbank.cliente.service.acao.RealizaConversaoCliente;
+import br.com.digitalbank.cliente.service.acao.AdicionaLinkEConversaoCliente;
 import br.com.digitalbank.cliente.service.acao.RealizaValidacaoCliente;
 import lombok.RequiredArgsConstructor;
 
@@ -29,7 +29,7 @@ public class ClienteService {
 
 	private final RealizaValidacaoCliente realizaValidacaoCliente;
 
-	private final RealizaConversaoCliente realizaConversaoCliente;
+	private final AdicionaLinkEConversaoCliente adicionaLinkEConversaoCliente;
 
 	public ClienteVO criaCliente(ClienteVO vo) {
 
@@ -43,7 +43,7 @@ public class ClienteService {
 
 		logger.info("Entidade cliente persitida");
 
-		return realizaConversaoCliente.converteEmClienteVO(cliente);
+		return adicionaLinkEConversaoCliente.adicionaEConverteVO(cliente);
 	}
 
 	public ClienteVO buscaClientePorCpf(String cpf) {
@@ -51,7 +51,7 @@ public class ClienteService {
 
 		var cliente = realizaValidacaoCliente.validaEBuscaClienteExistente(cpf);
 
-		return realizaConversaoCliente.converteEmClienteVO(cliente);
+		return adicionaLinkEConversaoCliente.adicionaEConverteVO(cliente);
 	}
 
 	public PagedModel<EntityModel<ClienteVO>> listaTodosClientes(Pageable pageable) {
@@ -59,7 +59,7 @@ public class ClienteService {
 
 		Page<Cliente> clientesPage = repository.findAll(pageable);
 
-		return realizaConversaoCliente.converteEmClientesPageVO(clientesPage, pageable);
+		return adicionaLinkEConversaoCliente.adicionaEConvertePageVO(clientesPage, pageable);
 	}
 
 	public PagedModel<EntityModel<ClienteVO>> listaTodosClientesPorNome(String nome, Pageable pageable) {
@@ -67,7 +67,7 @@ public class ClienteService {
 
 		var clientesPage = repository.findAllByNome(nome, pageable);
 
-		return realizaConversaoCliente.converteEmClientesPageVO(clientesPage, pageable);
+		return adicionaLinkEConversaoCliente.adicionaEConvertePageVO(clientesPage, pageable);
 	}
 
 	public ClienteVO desativaCliente(String cpf) {
@@ -77,6 +77,6 @@ public class ClienteService {
 
 		repository.disableCliente(cliente.getId());
 
-		return realizaConversaoCliente.converteEmClienteVO(cliente);
+		return adicionaLinkEConversaoCliente.adicionaEConverteVO(cliente);
 	}
 }

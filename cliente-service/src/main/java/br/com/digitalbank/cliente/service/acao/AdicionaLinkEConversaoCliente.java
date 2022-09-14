@@ -18,12 +18,12 @@ import br.com.digitalbank.cliente.mapper.DozerMapper;
 import br.com.digitalbank.cliente.model.Cliente;
 
 @Component
-public class RealizaConversaoCliente {
+public class AdicionaLinkEConversaoCliente {
 	
 	@Autowired
 	private PagedResourcesAssembler<ClienteVO> assembler;
 
-	public PagedModel<EntityModel<ClienteVO>> converteEmClientesPageVO(Page<Cliente> clientesPage,
+	public PagedModel<EntityModel<ClienteVO>> adicionaEConvertePageVO(Page<Cliente> clientesPage,
 			Pageable pageable){
 		
 		var vosPages = clientesPage.map(c -> DozerMapper.parseObject(c, ClienteVO.class)); //converter person entity para VO
@@ -37,10 +37,10 @@ public class RealizaConversaoCliente {
 		return assembler.toModel(vosPages, link);
 	}
 	
-	public ClienteVO converteEmClienteVO(Cliente cliente) {
+	public ClienteVO adicionaEConverteVO(Cliente cliente) {
 		var vo = DozerMapper.parseObject(cliente, ClienteVO.class);
 		vo.add(linkTo(methodOn(ClienteController.class).buscaClientePorCpf(vo.getCpf())).withSelfRel());
-		
+		vo.add(linkTo(methodOn(ClienteController.class).desativaCliente(vo.getCpf())).withRel("Desativa"));
 		return vo;
 	}
 

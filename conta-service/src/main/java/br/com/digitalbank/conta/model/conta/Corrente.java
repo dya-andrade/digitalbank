@@ -33,7 +33,7 @@ public class Corrente extends Conta implements Serializable {
 	
 	@Override
 	public void movimentaNovoValor(BigDecimal novoValor) {
-		super.valor = valor.subtract(novoValor);
+		super.setValor(super.getValor().subtract(novoValor));
 		this.ultimaTarifa = LocalDate.now();
 	}
 
@@ -49,10 +49,10 @@ public class Corrente extends Conta implements Serializable {
 	}
 	
 	public void retiraValorTransacao(BigDecimal valor) {
-		super.valor = super.valor.subtract(valor);
+		super.setValor(super.getValor().subtract(valor));
 	}
 
 	public void adicionaValorTransacao(BigDecimal valor) {
-		super.valor = super.valor.add(valor);
+		super.setValor(super.getValor().add(valor));
 	}
 }

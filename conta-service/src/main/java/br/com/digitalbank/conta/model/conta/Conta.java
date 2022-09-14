@@ -23,15 +23,15 @@ public abstract class Conta implements MovimentacaoNaConta, Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long id;
+	private Long id;
 	
-	protected String cpfCliente;
+	private String cpfCliente;
 	
-	protected BigDecimal valor;
+	private BigDecimal valor;
 		
 	@Column(columnDefinition = "tinyint(1) default 1")
-	protected Boolean ativada = this.ativada == null ? true : false;
+	private Boolean ativada = this.ativada == null ? true : false;
 
 	@Enumerated(EnumType.STRING)
-	protected TipoConta tipoConta;
+	private TipoConta tipoConta;
 }

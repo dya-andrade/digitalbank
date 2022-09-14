@@ -34,7 +34,7 @@ public class Poupanca extends Conta implements Serializable {
 
 	@Override
 	public void movimentaNovoValor(BigDecimal novoValor) {
-		super.valor = valor.add(novoValor);
+		super.setValor(super.getValor().add(novoValor));
 		this.ultimoRendimento = LocalDate.now();
 	}
 

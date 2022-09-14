@@ -22,13 +22,13 @@ public abstract class Movimentacao implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Long id;
+	private Long id;
 	
-	protected BigDecimal percentual;
+	private BigDecimal percentual;
 	
-	protected LocalDate data;
+	private LocalDate data;
 	
 	@Enumerated(EnumType.STRING)
-	protected TipoMovimentacao tipoMovimentacao;
+	private TipoMovimentacao tipoMovimentacao;
 	
 }
