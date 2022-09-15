@@ -1,9 +1,11 @@
 server:
   port: 8888
+  
 spring:
   datasource:
     driverClassName: com.mysql.cj.jdbc.Driver
 #db gerado dinamicamente runtime
+
   jpa:
     hibernate.ddl-auto: none
     generate-ddl: true
