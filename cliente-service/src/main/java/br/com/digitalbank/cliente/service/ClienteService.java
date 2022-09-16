@@ -49,6 +49,7 @@ public class ClienteService {
 	}
 	
 	private Cliente criaESalvaCliente(ClienteVO vo) {
+		
 		realizaValidacaoCliente.validaCriacaoNovoCliente(vo);
 
 		logger.info("Persistindo uma entidade cliente");
