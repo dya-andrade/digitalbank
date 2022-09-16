@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
+import br.com.digitalbank.cliente.data.vo.v1.ClienteVO1;
 import br.com.digitalbank.cliente.service.ClienteService;
 import lombok.RequiredArgsConstructor;
 
@@ -31,17 +31,17 @@ public class ClienteController {
 	private final ClienteService service;
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)	
-	public ClienteVO criaCliente(@RequestBody @Valid ClienteVO vo) {
+	public ClienteVO1 criaCliente(@RequestBody @Valid ClienteVO1 vo) {
 		return service.criaCliente(vo);
 	}
 	
 	@GetMapping(value = "/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ClienteVO buscaClientePorCpf(@PathVariable(value = "cpf") String cpf) {
+	public ClienteVO1 buscaClientePorCpf(@PathVariable(value = "cpf") String cpf) {
 		return service.buscaClientePorCpf(cpf);
 	}
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<PagedModel<EntityModel<ClienteVO>>> listaTodosClientes(
+	public ResponseEntity<PagedModel<EntityModel<ClienteVO1>>> listaTodosClientes(
 			@RequestParam(value = "nome", defaultValue = "") String nome,
 			@RequestParam(value = "pagina", defaultValue = "0") Integer pagina,
 			@RequestParam(value = "tamanho", defaultValue = "5") Integer tamanho,
@@ -58,7 +58,7 @@ public class ClienteController {
 	}
 	
 	@PatchMapping(value = "/{cpf}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ClienteVO desativaCliente(@PathVariable(value = "cpf") String cpf) {
+	public ClienteVO1 desativaCliente(@PathVariable(value = "cpf") String cpf) {
 		return service.desativaCliente(cpf);
 	}
 

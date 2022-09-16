@@ -15,7 +15,7 @@ import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import br.com.digitalbank.cliente.config.TesteConfig;
-import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
+import br.com.digitalbank.cliente.data.vo.v1.ClienteVO1;
 import br.com.digitalbank.cliente.data.vo.v1.EnderecoVO;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -32,7 +32,7 @@ public class ClienteControllerTest extends AbstractIntegrationTest {
 
 	private static ObjectMapper objectMapper;
 	
-	private ClienteVO vo;
+	private ClienteVO1 vo;
 
 	@BeforeAll
 	public static void setup() {
@@ -44,7 +44,7 @@ public class ClienteControllerTest extends AbstractIntegrationTest {
 	@Order(0)
 	public void autorizacao() {
 		
-		vo = new ClienteVO();
+		vo = new ClienteVO1();
 		
 		vo.setCpf("476.455.348-35");
 		vo.setNomeCompleto("Dyane Andrade");
@@ -83,7 +83,7 @@ public class ClienteControllerTest extends AbstractIntegrationTest {
 				.extract()
 					.body().asString();
 
-		var cliente = objectMapper.readValue(content, ClienteVO.class);
+		var cliente = objectMapper.readValue(content, ClienteVO1.class);
 
 		Assert.assertNotNull(cliente);
 	}
@@ -104,7 +104,7 @@ public class ClienteControllerTest extends AbstractIntegrationTest {
 				.extract()
 					.body().asString();
 		
-		var cliente = objectMapper.readValue(content, ClienteVO.class);
+		var cliente = objectMapper.readValue(content, ClienteVO1.class);
 		
 		Assert.assertNotNull(cliente);
 	}
@@ -126,7 +126,7 @@ public class ClienteControllerTest extends AbstractIntegrationTest {
 				.extract()
 					.body().asString();
 		
-		var cliente = objectMapper.readValue(content, ClienteVO.class);
+		var cliente = objectMapper.readValue(content, ClienteVO1.class);
 		
 		Assert.assertNotNull(cliente);
 		Assert.assertFalse(cliente.getAtivado());

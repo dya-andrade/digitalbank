@@ -1,6 +1,6 @@
 package br.com.digitalbank.cliente.service.validacao;
 
-import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
+import br.com.digitalbank.cliente.data.vo.ClienteVO;
 
 public interface ValidacaoClienteNovo {
 

@@ -13,7 +13,9 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.stereotype.Component;
 
 import br.com.digitalbank.cliente.controller.ClienteController;
-import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
+import br.com.digitalbank.cliente.controller.ClienteV2Controller;
+import br.com.digitalbank.cliente.data.vo.v1.ClienteVO1;
+import br.com.digitalbank.cliente.data.vo.v2.ClienteVO2;
 import br.com.digitalbank.cliente.mapper.DozerMapper;
 import br.com.digitalbank.cliente.model.Cliente;
 
@@ -21,12 +23,12 @@ import br.com.digitalbank.cliente.model.Cliente;
 public class AdicionaLinkEConversaoCliente {
 	
 	@Autowired
-	private PagedResourcesAssembler<ClienteVO> assembler;
+	private PagedResourcesAssembler<ClienteVO1> assembler;
 
-	public PagedModel<EntityModel<ClienteVO>> adicionaEConvertePageVO(Page<Cliente> clientesPage,
+	public PagedModel<EntityModel<ClienteVO1>> adicionaEConvertePageVO(Page<Cliente> clientesPage,
 			Pageable pageable){
 		
-		var vosPages = clientesPage.map(c -> DozerMapper.parseObject(c, ClienteVO.class)); //converter person entity para VO
+		var vosPages = clientesPage.map(c -> DozerMapper.parseObject(c, ClienteVO1.class)); //converter person entity para VO
 
 		vosPages.map(c -> c.add(
 				linkTo(methodOn(ClienteController.class).buscaClientePorCpf(c.getCpf())).withSelfRel())); //add links HATEOAS
@@ -37,11 +39,16 @@ public class AdicionaLinkEConversaoCliente {
 		return assembler.toModel(vosPages, link);
 	}
 	
-	public ClienteVO adicionaEConverteVO(Cliente cliente) {
-		var vo = DozerMapper.parseObject(cliente, ClienteVO.class);
+	public ClienteVO1 adicionaEConverteVO(Cliente cliente) {
+		var vo = DozerMapper.parseObject(cliente, ClienteVO1.class);
 		vo.add(linkTo(methodOn(ClienteController.class).buscaClientePorCpf(vo.getCpf())).withSelfRel());
 		vo.add(linkTo(methodOn(ClienteController.class).desativaCliente(vo.getCpf())).withRel("Desativa"));
 		return vo;
 	}
 
+	public ClienteVO2 adicionaEConverteVO2(Cliente cliente) {
+		var vo = DozerMapper.parseObject(cliente, ClienteVO2.class);
+		vo.add(linkTo(methodOn(ClienteV2Controller.class).buscaClientePorCpfV2(vo.getCpf())).withSelfRel());
+		return vo;
+	}
 }

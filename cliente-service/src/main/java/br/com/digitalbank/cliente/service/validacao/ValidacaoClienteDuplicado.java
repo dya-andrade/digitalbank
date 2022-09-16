@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
+import br.com.digitalbank.cliente.data.vo.v1.ClienteVO1;
 import br.com.digitalbank.cliente.exception.EntityPersistenceException;
 import br.com.digitalbank.cliente.model.Cliente;
 import br.com.digitalbank.cliente.repository.ClienteRepository;
@@ -17,7 +17,7 @@ public class ValidacaoClienteDuplicado implements ValidacaoClienteNovo {
 	private ClienteRepository repository;
 
 	@Override
-	public void valida(ClienteVO cliente) {
+	public void valida(ClienteVO1 cliente) {
 
 		Optional<Cliente> clienteDuplicado = repository.findByCpf(cliente.getCpf());
 

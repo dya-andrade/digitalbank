@@ -1,4 +1,4 @@
-package br.com.digitalbank.cliente.data.vo.v1;
+package br.com.digitalbank.cliente.data.vo;
 
 import java.io.Serializable;
 
@@ -7,6 +7,7 @@ import javax.validation.constraints.NotNull;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import br.com.digitalbank.cliente.data.vo.v1.EnderecoVO;
 import lombok.Data;
 
 @Data
@@ -16,7 +17,7 @@ public class ClienteVO extends RepresentationModel<ClienteVO> implements Seriali
 
 	@NotBlank
 	private String cpf;
-
+	
 	@NotBlank
 	private String nomeCompleto;
 

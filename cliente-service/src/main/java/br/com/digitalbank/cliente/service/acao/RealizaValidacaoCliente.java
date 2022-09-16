@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
+import br.com.digitalbank.cliente.data.vo.ClienteVO;
 import br.com.digitalbank.cliente.model.Cliente;
 import br.com.digitalbank.cliente.service.validacao.ValidacaoClienteExiste;
 import br.com.digitalbank.cliente.service.validacao.ValidacaoClienteNovo;
