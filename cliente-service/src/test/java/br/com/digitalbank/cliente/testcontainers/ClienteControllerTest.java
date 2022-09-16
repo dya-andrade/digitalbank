@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import br.com.digitalbank.cliente.config.TesteConfig;
 import br.com.digitalbank.cliente.data.vo.v1.ClienteVO;
 import br.com.digitalbank.cliente.data.vo.v1.EnderecoVO;
 import io.restassured.RestAssured;
@@ -61,7 +62,7 @@ public class ClienteControllerTest extends AbstractIntegrationTest {
 		vo.setEndereco(enderecoVO);
 
 		specification = new RequestSpecBuilder()
-				.setBasePath("/cliente-service/v1").setPort(8888)
+				.setBasePath(TesteConfig.URL).setPort(TesteConfig.PORTA)
 				.addFilter(new RequestLoggingFilter(LogDetail.ALL))
 				.addFilter(new ResponseLoggingFilter(LogDetail.ALL))
 				.build();
@@ -73,7 +74,7 @@ public class ClienteControllerTest extends AbstractIntegrationTest {
 
 		var content = RestAssured.given()
 				.spec(specification)
-				.contentType("application/json")
+				.contentType(TesteConfig.APPLICATION_JSON)
 					.body(vo)
 				.when()
 					.post()
@@ -94,8 +95,8 @@ public class ClienteControllerTest extends AbstractIntegrationTest {
 		var content =
 				RestAssured.given() 
 				.spec(specification)
-				.contentType("application/json")
-					.pathParams("cpf", "478.430.358-23") 
+				.contentType(TesteConfig.APPLICATION_JSON)
+					.pathParams("cpf", vo.getCpf()) 
 				.when()
 					.get("{cpf}")
 				.then()
@@ -108,4 +109,26 @@ public class ClienteControllerTest extends AbstractIntegrationTest {
 		Assert.assertNotNull(cliente);
 	}
 	
+	
+	@Test
+	@Order(3)
+	public void testeDesativaCliente() throws JsonMappingException, JsonProcessingException {
+				
+		var content =
+				RestAssured.given() 
+				.spec(specification)
+				.contentType(TesteConfig.APPLICATION_JSON)
+					.pathParams("cpf", vo.getCpf()) 
+				.when()
+					.patch("{cpf}")
+				.then()
+					.statusCode(200)
+				.extract()
+					.body().asString();
+		
+		var cliente = objectMapper.readValue(content, ClienteVO.class);
+		
+		Assert.assertNotNull(cliente);
+		Assert.assertFalse(cliente.getAtivado());
+	}
 }
