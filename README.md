@@ -1,5 +1,5 @@
 # Digital Bank
-ANDAMENTO - Projeto pessoal sobre a criação de um banco digital em API RESTful e Microservices.
+PAUSADO - Projeto pessoal sobre a criação de um banco digital em API RESTful e Microservices.
 
 * O projeto é separado em 3 services, um service para dados dos clientes, outro service para as contas dos clientes do tipo poupança e corrente e outro service para transações realizadas nas contas.
 
